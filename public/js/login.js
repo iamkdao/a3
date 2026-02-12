@@ -1,3 +1,5 @@
+// public/js/login.js (ONE ORIGIN ONLY, cookie auth)
+
 function getAccounts() {
     try {
         return JSON.parse(localStorage.getItem("accounts")) || {};
@@ -18,12 +20,8 @@ function switchSites() {
     const loginForm = document.querySelector("#login-form");
     const signupForm = document.querySelector("#signup-form");
 
-    if (loginForm) {
-        window.location.href = "/signup"
-    }
-    if (signupForm) {
-        window.location.href = "/login"
-    }
+    if (loginForm) window.location.href = "/signup";
+    if (signupForm) window.location.href = "/login";
 }
 
 window.onload = () => {
@@ -31,7 +29,9 @@ window.onload = () => {
     const signupForm = document.querySelector("#signup-form");
     const msg = document.querySelector("#auth-msg");
 
-    const show = (text) => { if (msg) msg.textContent = text || ""; };
+    const show = (text) => {
+        if (msg) msg.textContent = text || "";
+    };
 
     // LOGIN
     if (loginForm) {
@@ -54,9 +54,10 @@ window.onload = () => {
             await fetch("/api/session", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                credentials: "same-origin",
+                credentials: "include",
                 body: JSON.stringify({ username }),
             });
+
             window.location.href = "/index";
         };
     }
@@ -84,15 +85,15 @@ window.onload = () => {
 
             accounts[username] = password;
             setAccounts(accounts);
-
             setCurrentUser(username);
 
             await fetch("/api/session", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                credentials: "same-origin",
+                credentials: "include",
                 body: JSON.stringify({ username }),
-            })
+            });
+
             window.location.href = "/index";
         };
     }
