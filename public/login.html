@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>CS4241 Assignment 2 - Login</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1" />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script defer
+            src="https://unpkg.com/@material-tailwind/html@2.3.2/scripts/ripple.js"></script>
+
+        <script defer src="/js/login.js"></script>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    </head>
+
+    <body class="min-h-screen bg-gray-900 text-white">
+        <main class="mx-auto flex min-h-screen max-w-md items-center px-6">
+            <div
+                class="w-full rounded-2xl bg-gray-800 p-6 shadow-xl shadow-black/40">
+                <h1 class="text-2xl font-bold">Log In</h1>
+                <p class="mt-1 text-sm text-gray-300">Welcome back.</p>
+
+                <div id="auth-msg" class="mt-4 text-sm text-red-300"></div>
+
+                <form id="login-form" class="mt-6 space-y-4">
+                    <input
+                        id="login-username"
+                        class="w-full rounded-lg border border-white/10 bg-gray-900 px-4 py-3 text-white outline-none focus:border-white/30"
+                        placeholder="Username"
+                        autocomplete="username" />
+
+                    <input
+                        id="login-password"
+                        type="password"
+                        class="w-full rounded-lg border border-white/10 bg-gray-900 px-4 py-3 text-white outline-none focus:border-white/30"
+                        placeholder="Password"
+                        autocomplete="current-password" />
+
+                    <button
+                        type="button"
+                        id="login-btn"
+                        class="middle none w-full rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 shadow-md shadow-gray-900/20 transition-all hover:shadow-lg hover:shadow-gray-900/30"
+                        data-ripple-dark="true">
+                        Log In
+                    </button>
+                    <button
+                        type="button"
+                        id="switch-btn"
+                        onclick="switchSites()"
+                        class="middle none w-full rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 shadow-md shadow-gray-900/20 transition-all hover:shadow-lg hover:shadow-gray-900/30"
+                        data-ripple-dark="true">
+                        Sign up
+                    </button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

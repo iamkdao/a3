@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>CS4241 Assignment 2</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Material Tailwind -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script defer
+            src="https://unpkg.com/@material-tailwind/html@2.3.2/scripts/ripple.js"></script>
+
+        <script defer src="/js/client.js"></script>
+        <link rel="stylesheet" href="/css/main.css" />
+
+        <!-- remove favicon error -->
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    </head>
+
+    <body class="min-h-screen bg-gray-900 text-white">
+        <main class="mx-auto min-h-screen px-6 py-10">
+            <!-- Header (matches login vibe) -->
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold">Awesome To-do App</h1>
+
+            </header>
+
+            <!-- Add button -->
+            <div class="mb-6">
+                <!-- keep id for JS hook; class kept only if you still reference it elsewhere -->
+                <button
+                    id="big-button"
+                    class="middle none inline-flex w-full items-center justify-center rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 shadow-md shadow-gray-900/20 transition-all hover:shadow-lg hover:shadow-gray-900/30 sm:w-auto"
+                    data-ripple-dark="true">
+                    Add New Todo
+                </button>
+            </div>
+
+            <!-- Todo list -->
+            <ul id="todo-list" class="grid gap-4"></ul>
+        </main>
+
+        <!-- Add/Edit Modal Overlay -->
+        <div
+            id="add-card"
+            class="hidden fixed inset-0 z-50 items-center justify-center bg-black/70 p-6">
+            <form
+                id="todo-form"
+                class="w-full max-w-md rounded-2xl bg-gray-800 p-6 shadow-xl shadow-black/40">
+                <h2 class="text-2xl font-bold">Add New Todo</h2>
+                <p class="mt-1 text-sm text-gray-300">
+                    Fill in the details below.
+                </p>
+
+                <div class="mt-6 space-y-4">
+                    <div>
+                        <label class="mb-1 block text-sm text-gray-300">
+                            Task
+                        </label>
+                        <input
+                            id="task"
+                            required
+                            class="w-full rounded-lg border border-white/10 bg-gray-900 px-4 py-3 text-white outline-none focus:border-white/30"
+                            placeholder="Task name" />
+                    </div>
+
+                    <div>
+                        <label class="mb-1 block text-sm text-gray-300">
+                            Description
+                        </label>
+                        <textarea
+                            id="description"
+                            class="min-h-[96px] w-full resize-y rounded-lg border border-white/10 bg-gray-900 px-4 py-3 text-white outline-none focus:border-white/30"
+                            placeholder="Optional notes..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="mb-1 block text-sm text-gray-300">
+                            Deadline
+                        </label>
+                        <input
+                            type="date"
+                            id="deadline"
+                            class="w-full rounded-lg border border-white/10 bg-gray-900 px-4 py-3 text-white outline-none focus:border-white/30" />
+                    </div>
+
+                    <div>
+                        <label class="mb-1 block text-sm text-gray-300">
+                            Priority
+                        </label>
+                        <select
+                            id="priority"
+                            required
+                            class="w-full rounded-lg border border-white/10 bg-gray-900 px-4 py-3 text-white outline-none focus:border-white/30">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <div class="mt-6 flex gap-3">
+                        <button
+                            type="button"
+                            id="cancel-btn"
+                            class="middle none w-full rounded-lg bg-gray-700 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/20 transition-all hover:bg-gray-600 hover:shadow-lg hover:shadow-gray-900/30"
+                            data-ripple-dark="true">
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="middle none w-full rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-gray-900 shadow-md shadow-gray-900/20 transition-all hover:shadow-lg hover:shadow-gray-900/30"
+                            data-ripple-dark="true">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
